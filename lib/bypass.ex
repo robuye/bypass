@@ -95,10 +95,8 @@ defmodule Bypass do
     raise "Not available in ExUnit, as it's configured automatically."
   end
 
-  if Code.ensure_loaded?(ESpec) do
-    defp verify_expectations!(:espec, bypass) do
-      do_verify_expectations(bypass.pid, ESpec.AssertionError)
-    end
+  defp verify_expectations!(:espec, bypass) do
+    do_verify_expectations(bypass.pid, ESpec.AssertionError)
   end
 
   defp do_verify_expectations(bypass_pid, error_module) do
